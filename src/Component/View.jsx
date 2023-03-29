@@ -1,9 +1,12 @@
 import { Button, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@mui/material'
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
+import Addstud from './Addstud'
 
 const View = () => {
-    var[Students,setStudents]=useState([])
+    var[update,setUpdate] = useState(false)
+    var[selected,setSelected] = useState([])
+    var[Students,setStudents] = useState([])
     useEffect(()=>{
         axios.get("http://localhost:3005/students")
         .then(response=>{
@@ -13,6 +16,11 @@ const View = () => {
         .catch(error=>console.log(error))
 
     },[])
+
+    const updateValue =(value) =>{
+        setSelected (value);
+        setUpdate(true);
+    }
     const deleteValue = (id)=>{
         console.log("delete clicked"+id)
         axios.delete("http://localhost:3005/students/"+id)
@@ -22,9 +30,8 @@ const View = () => {
             window.location.reload(false);
         })
     }
-  return (
-    <div>
-   <TableContainer>
+
+    var finalJSX = <TableContainer>
     <Table>
         <TableHead>
             
@@ -32,6 +39,7 @@ const View = () => {
                 <TableCell align='center'>ID</TableCell>
                 <TableCell align='center'>NAME</TableCell>
                 <TableCell align='center'>GRADE</TableCell>
+                <TableCell>UPDATE</TableCell>
                 <TableCell>DELETE</TableCell>
             </TableRow>
         </TableHead>
@@ -41,15 +49,21 @@ const View = () => {
                 <TableCell align='center'>{value.id}</TableCell>
                 <TableCell align='center'>{value.name}</TableCell>
                 <TableCell align='center'>{value.grade}</TableCell>
+                <TableCell> <Button color='success' variant='contained' onClick={()=>updateValue(value)}>update</Button></TableCell>
                 <TableCell>
                     <Button color='error' variant='contained' onClick={()=>deleteValue(value.id)}>Delete</Button>
-                    
                 </TableCell>
+               
                 </TableRow>
             })}
                 </TableBody>
     </Table>
    </TableContainer>
+   if (update)
+   finalJSX = <Addstud data={selected} method="put"/>
+  return (
+    <div>
+  {finalJSX}
    </div>
 
    
