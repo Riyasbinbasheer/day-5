@@ -36,9 +36,9 @@ const View = () => {
         <TableHead>
             
             <TableRow>
-                <TableCell align='center'>ID</TableCell>
-                <TableCell align='center'>NAME</TableCell>
-                <TableCell align='center'>GRADE</TableCell>
+                <TableCell align='center'>GENER</TableCell>
+                <TableCell align='center'>BOOK TITLE</TableCell>
+                <TableCell align='center'>Author</TableCell>
                 <TableCell>UPDATE</TableCell>
                 <TableCell>DELETE</TableCell>
             </TableRow>

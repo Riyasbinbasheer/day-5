@@ -40,11 +40,16 @@ const Addstud = (props) => {
             <TextField label='Name' name='name' variant='outlined' value={input.name} onChange={inputHandler}></TextField>
             <br></br>
             <br></br>
-            <TextField label='Grade' name='grade' variant='outlined' value={input.grade} onChange={inputHandler}></TextField>
+            <TextField label='Author' name='grade' variant='outlined' value={input.grade} onChange={inputHandler}></TextField>
             <br>
             </br>
+            <TextField label='published by' name='id' variant='outlined' value={input.id} onChange={inputHandler}></TextField>
             <br></br>
+            <br>
+            </br>
             <Button color="success" variant='contained' onClick={readValues}> Submit </Button>
+            <br>
+            </br>
 
         </div>
     )

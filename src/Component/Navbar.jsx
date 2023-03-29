@@ -10,7 +10,7 @@ const Navbar = () => {
                 <AppBar position="static">
                     <Toolbar>
                         <Typography align='left' variant="h6" component="div" sx={{ flexGrow: 1 }}>
-                            Student App
+                            BOOK
                         </Typography>
                         <Button color="inherit">
                             <Link to='/' style={{ color: 'white', textDecoration: 'none' }}>View</Link>
